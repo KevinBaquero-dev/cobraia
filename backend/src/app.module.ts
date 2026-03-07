@@ -9,6 +9,7 @@ import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 import { RolesGuard } from './modules/auth/guards/roles.guard';
 import { TenantsModule } from './modules/tenants/tenants.module';
 import { ClientsModule } from './modules/clients/clients.module';
+import { InvoicesModule } from './modules/invoices/invoices.module';
 import configuration from './config';
 
 @Module({
@@ -34,6 +35,7 @@ import configuration from './config';
     AuthModule,
     TenantsModule,
     ClientsModule,
+    InvoicesModule,
   ],
   providers: [
     {
