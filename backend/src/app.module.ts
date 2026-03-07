@@ -11,6 +11,7 @@ import { TenantsModule } from './modules/tenants/tenants.module';
 import { ClientsModule } from './modules/clients/clients.module';
 import { InvoicesModule } from './modules/invoices/invoices.module';
 import { StatementsModule } from './modules/statements/statements.module';
+import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
 import configuration from './config';
 
 @Module({
@@ -38,6 +39,7 @@ import configuration from './config';
     ClientsModule,
     InvoicesModule,
     StatementsModule,
+    SubscriptionsModule,
   ],
   providers: [
     {

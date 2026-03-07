@@ -262,16 +262,19 @@ model TenantSequence {
 // ─── SUBSCRIPTIONS ────────────────────────────────────
 
 model Subscription {
-  id               String             @id @default(uuid())
-  tenantId         String             @map("tenant_id")
-  plan             Plan
-  status           SubscriptionStatus
-  wompiReference   String?            @map("wompi_reference")
-  currentPeriodStart DateTime         @map("current_period_start")
-  currentPeriodEnd   DateTime         @map("current_period_end")
-  cancelledAt      DateTime?          @map("cancelled_at")
-  createdAt        DateTime           @default(now()) @map("created_at")
-  updatedAt        DateTime           @updatedAt @map("updated_at")
+  id                  String             @id @default(uuid())
+  tenantId            String             @map("tenant_id")
+  plan                Plan
+  status              SubscriptionStatus
+  wompiReference      String?            @map("wompi_reference")
+  wompiTransactionId  String?            @map("wompi_transaction_id")
+  priceAmount         Int                @default(0) @map("price_amount")
+  currency            String             @default("COP")
+  startDate           DateTime           @map("start_date")
+  endDate             DateTime           @map("end_date")
+  cancelledAt         DateTime?          @map("cancelled_at")
+  createdAt           DateTime           @default(now()) @map("created_at")
+  updatedAt           DateTime           @updatedAt @map("updated_at")
 
   tenant Tenant @relation(fields: [tenantId], references: [id])
 
