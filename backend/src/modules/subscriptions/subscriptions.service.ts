@@ -130,18 +130,18 @@ export class SubscriptionsService {
     if (!transaction || transaction.status !== 'APPROVED') {
       return { received: true };
     }
+    
+// Formato: cobraia-{tenantId}-{plan}-{timestamp}
+// tenantId es UUID con guiones, por eso usamos regex
+const reference = transaction.reference as string;
+const match = reference.match(/^cobraia-(.+)-(BASIC|PRO|ENTERPRISE)-\d+$/);
 
-    // Extraer tenantId y plan de la referencia
-    // Formato: cobraia-{tenantId}-{plan}-{timestamp}
-    const reference = transaction.reference as string;
-    const parts = reference.split('-');
+if (!match) {
+  return { received: true };
+}
 
-    if (parts.length < 3 || parts[0] !== 'cobraia') {
-      return { received: true };
-    }
-
-    const tenantId = parts[1];
-    const plan = parts[2] as Plan;
+const tenantId = match[1];
+const plan = match[2] as Plan;
 
     if (!Object.values(Plan).includes(plan)) {
       return { received: true };
