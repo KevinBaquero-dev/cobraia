@@ -60,6 +60,10 @@ model Tenant {
   invoiceCurrency    String             @default("COP") @map("invoice_currency")
   invoicePaymentDays Int                @default(30) @map("invoice_payment_days")
   whatsappNumber     String?            @map("whatsapp_number")
+  taxId              String?            @map("tax_id")
+  phone              String?            @map("phone")
+  address            String?            @map("address")
+  invoiceNotes       String?            @map("invoice_notes")
   isActive           Boolean            @default(true) @map("is_active")
   settings           Json               @default("{}")
   createdAt          DateTime           @default(now()) @map("created_at")
@@ -70,6 +74,7 @@ model Tenant {
   invoices      Invoice[]
   subscriptions Subscription[]
   sequence      TenantSequence?
+  systemTemplate     SystemTemplate?    @relation(fields: [templateId], references: [id])
   auditLogs     AuditLog[]
   chatSessions  ChatConversation[]
 
@@ -235,6 +240,7 @@ model SystemTemplate {
   thumbnailUrl String? @map("thumbnail_url")
   isActive     Boolean @default(true) @map("is_active")
   sortOrder    Int     @default(0) @map("sort_order")
+  tenants            Tenant[]
 
   @@map("system_templates")
 }
