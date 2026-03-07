@@ -8,6 +8,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { JwtAuthGuard } from './modules/auth/guards/jwt-auth.guard';
 import { RolesGuard } from './modules/auth/guards/roles.guard';
 import { TenantsModule } from './modules/tenants/tenants.module';
+import { ClientsModule } from './modules/clients/clients.module';
 import configuration from './config';
 
 @Module({
@@ -32,6 +33,7 @@ import configuration from './config';
     HealthModule,
     AuthModule,
     TenantsModule,
+    ClientsModule,
   ],
   providers: [
     {
