@@ -1,0 +1,18 @@
+{
+  "name": "cobraia",
+  "version": "1.0.0",
+  "description": "Sistema SaaS de facturación con IA para Colombia",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "db:migrate": "npm run migrate --workspace=backend",
+    "db:seed": "npm run seed --workspace=backend",
+    "db:studio": "npm run studio --workspace=backend",
+    "db:generate": "npm run generate --workspace=backend"
+  }
+}
