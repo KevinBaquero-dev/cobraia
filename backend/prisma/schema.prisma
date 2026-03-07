@@ -84,6 +84,7 @@ model User {
   email             String
   passwordHash      String?   @map("password_hash")
   name              String
+  phone             String?   @map("phone")
   role              UserRole  @default(VIEWER)
   isActive          Boolean   @default(true) @map("is_active")
   googleId          String?   @map("google_id")
