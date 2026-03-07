@@ -13,10 +13,16 @@ import { UpdateInvoiceDto } from './dto/update-invoice.dto';
 import { QueryInvoiceDto } from './dto/query-invoice.dto';
 import { CurrentTenant, CurrentUser, Roles } from '../../common/decorators';
 import { InvoiceStatus } from '@prisma/client';
+import { Res } from '@nestjs/common';
+import { Response } from 'express';
+import { PdfService } from '../pdf/pdf.service';
 
 @Controller('invoices')
 export class InvoicesController {
-  constructor(private invoicesService: InvoicesService) {}
+  constructor(
+    private invoicesService: InvoicesService,
+    private pdfService: PdfService,
+    ) {}
 
   @Post()
   @Roles('OWNER', 'ADMIN')
@@ -74,4 +80,19 @@ export class InvoicesController {
   ) {
     return this.invoicesService.update(tenantId, user.id, id, dto);
   }
+
+  @Post(':id/pdf')
+async generatePdf(
+  @CurrentTenant() tenantId: string,
+  @Param('id') id: string,
+  @Res() res: Response,
+    ) {
+  const pdfBuffer = await this.pdfService.generateInvoicePdf(tenantId, id);
+  res.set({
+    'Content-Type': 'application/pdf',
+    'Content-Disposition': `attachment; filename="factura-${id}.pdf"`,
+    'Content-Length': pdfBuffer.length,
+  });
+  res.end(pdfBuffer);
+    }
 }
