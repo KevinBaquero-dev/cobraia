@@ -1,9 +1,20 @@
 import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+});
+
 export const metadata: Metadata = {
-  title: 'CobraIA — Facturación inteligente para Colombia',
-  description: 'Sistema profesional de facturación con IA para comerciantes y PyMEs colombianas',
+  title: 'CobraIA — Facturación Inteligente',
+  description: 'Sistema de facturación con IA para PyMEs colombianas',
 };
 
 export default function RootLayout({
@@ -12,8 +23,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
-      <body>{children}</body>
+    <html lang="es" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
