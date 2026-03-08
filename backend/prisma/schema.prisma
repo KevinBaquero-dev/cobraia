@@ -119,7 +119,8 @@ model Client {
   email     String?
   phone     String?
   taxId     String?  @map("tax_id")
-  address   Json     @default("{}")
+  address   String?
+  city      String?
   notes     String?
   isActive  Boolean  @default(true) @map("is_active")
   createdAt DateTime @default(now()) @map("created_at")

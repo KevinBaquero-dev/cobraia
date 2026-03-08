@@ -2,13 +2,13 @@ import { IsString, IsOptional } from 'class-validator';
 
 export class WhatsappWebhookDto {
   @IsString()
-  From: string;
+  From: string = '';
 
   @IsString()
-  To: string;
+  To: string = '';
 
   @IsString()
-  Body: string;
+  Body: string = '';
 
   @IsOptional()
   @IsString()

@@ -2,10 +2,8 @@ import {
   IsString,
   IsOptional,
   IsEmail,
-  IsBoolean,
   MinLength,
   MaxLength,
-  IsObject,
 } from 'class-validator';
 
 export class CreateClientDto {
@@ -27,14 +25,12 @@ export class CreateClientDto {
   taxId?: string;
 
   @IsOptional()
-  @IsObject()
-  address?: {
-    street?: string;
-    city?: string;
-    state?: string;
-    country?: string;
-    zipCode?: string;
-  };
+  @IsString()
+  address?: string;
+
+  @IsOptional()
+  @IsString()
+  city?: string;
 
   @IsOptional()
   @IsString()

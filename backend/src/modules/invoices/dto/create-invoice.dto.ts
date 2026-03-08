@@ -10,8 +10,10 @@ import {
   Max,
   IsBoolean,
   MinLength,
+  IsEnum,
 } from 'class-validator';
 import { Type } from 'class-transformer';
+import { InvoiceStatus } from '@prisma/client';
 
 export class InvoiceItemDto {
   @IsString()
@@ -74,4 +76,8 @@ export class CreateInvoiceDto {
   @IsOptional()
   @IsString()
   currency?: string;
+
+  @IsOptional()
+  @IsEnum(InvoiceStatus)
+  status?: InvoiceStatus;
 }
