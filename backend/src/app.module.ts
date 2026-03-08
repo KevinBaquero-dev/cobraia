@@ -13,6 +13,7 @@ import { InvoicesModule } from './modules/invoices/invoices.module';
 import { StatementsModule } from './modules/statements/statements.module';
 import { SubscriptionsModule } from './modules/subscriptions/subscriptions.module';
 import { ChatModule } from './modules/chat/chat.module';
+import { WhatsappModule } from './modules/whatsapp/whatsapp.module';
 import configuration from './config';
 
 @Module({
@@ -42,6 +43,7 @@ import configuration from './config';
     StatementsModule,
     SubscriptionsModule,
     ChatModule,
+    WhatsappModule,
   ],
   providers: [
     {
