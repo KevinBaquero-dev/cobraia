@@ -14,5 +14,9 @@
     "db:seed": "npm run seed --workspace=backend",
     "db:studio": "npm run studio --workspace=backend",
     "db:generate": "npm run generate --workspace=backend"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "prisma": "^5.22.0"
   }
 }

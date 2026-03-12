@@ -24,15 +24,16 @@ export class ClientsService {
     }
 
     return this.prisma.client.create({
-      data: {
-        tenantId,
-        name: dto.name,
-        email: dto.email,
-        phone: dto.phone,
-        taxId: dto.taxId,
-        address: dto.address || {},
-        notes: dto.notes,
-      },
+    data: {
+    tenantId,
+    name: dto.name,
+    email: dto.email,
+    phone: dto.phone,
+    taxId: dto.taxId,
+    address: dto.address,
+    city: dto.city,
+    notes: dto.notes,
+    },
     });
   }
 

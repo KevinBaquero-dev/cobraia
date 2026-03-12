@@ -25,6 +25,11 @@ export class ChatController {
     return this.chatService.sendMessage(tenantId, user.id, dto);
   }
 
+  @Get('business-summary')
+  getBusinessSummary(@CurrentTenant() tenantId: string) {
+    return this.chatService.getBusinessSummary(tenantId);
+  }
+
   @Get('history')
   getHistory(@CurrentTenant() tenantId: string) {
     return this.chatService.getHistory(tenantId);

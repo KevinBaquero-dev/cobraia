@@ -62,6 +62,11 @@ export default function SubscriptionsPage() {
     );
   }
 
+  const visiblePlans = plans.filter((plan: any) => {
+  const order: Record<string, number> = { BASIC: 1, PRO: 2, ENTERPRISE: 3 };
+  return order[plan.plan] >= (order[current?.plan] || 1);
+  });
+
   return (
     <div className="space-y-8 animate-fade-in">
       <div>
@@ -100,8 +105,8 @@ export default function SubscriptionsPage() {
       {/* Plans grid */}
       <div>
         <h2 className="text-base font-semibold text-white mb-4">Planes disponibles</h2>
-        <div className="grid grid-cols-3 gap-4">
-          {plans.map((plan: any) => {
+        <div className={clsx('grid gap-4', visiblePlans.length === 1 ? 'grid-cols-1 max-w-sm' : visiblePlans.length === 2 ? 'grid-cols-2 max-w-2xl' : 'grid-cols-3')}>
+          {visiblePlans.map((plan: any) => {
             const isCurrentPlan = current?.plan === plan.plan;
             const Icon = planIcons[plan.plan] || Zap;
             return (

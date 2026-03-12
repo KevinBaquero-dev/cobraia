@@ -93,19 +93,15 @@ async function main() {
     where: { id: '00000000-0000-0000-0000-000000000001' },
     update: {},
     create: {
-      id:       '00000000-0000-0000-0000-000000000001',
-      tenantId: tenant.id,
-      name:     'Cliente de Prueba S.A.S',
-      email:    'cliente@prueba.com',
-      phone:    '3001234567',
-      taxId:    '900123456-1',
-      address:  {
-        street: 'Calle 100 # 15-20',
-        city:   'Bogotá',
-        state:  'Cundinamarca',
-        country:'Colombia',
-      },
-      isActive: true,
+    id:       '00000000-0000-0000-0000-000000000001',
+    tenantId: tenant.id,
+    name:     'Cliente de Prueba S.A.S',
+    email:    'cliente@prueba.com',
+    phone:    '3001234567',
+    taxId:    '900123456-1',
+    address:  'Calle 100 # 15-20',
+    city:     'Bogotá',
+    isActive: true,
     },
   });
   console.log('✅ Cliente de prueba creado');
